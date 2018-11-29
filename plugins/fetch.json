@@ -1,0 +1,18 @@
+{
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.webcomm.cordova.plugin.payment": {
+        "source": {
+            "type": "local",
+            "path": "cusPlugins/PaymentPlugin"
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}
