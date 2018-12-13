@@ -48,11 +48,11 @@ app.initialize();
 var eventsHandler = {
     exec: function (result) {
         if (result == PaymentPlugin.success()) {
-            alert("success");
+            alert("payment success");
         } else if (result == PaymentPlugin.cancel()) {
-            alert("cancel");
+            alert("payment cancel");
         } else if(result == PaymentPlugin.failed()) {
-            alert("failed");
+            alert("payment failed");
         }
     },
 }

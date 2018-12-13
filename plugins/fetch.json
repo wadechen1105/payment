@@ -7,10 +7,18 @@
         "is_top_level": true,
         "variables": {}
     },
-    "com.webcomm.cordova.plugin.payment": {
+    "cordova-plugin-device": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-device@^2.0.2"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "webcomm-cordova-plugin-payment": {
         "source": {
             "type": "local",
-            "path": "cusPlugins/PaymentPlugin"
+            "path": "cusPlugins/webcomm-cordova-plugin-payment"
         },
         "is_top_level": true,
         "variables": {}

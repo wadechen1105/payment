@@ -10,7 +10,10 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.webcomm.paymentplugin"
         },
-        "com.webcomm.cordova.plugin.payment": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+        },
+        "webcomm-cordova-plugin-payment": {
             "PACKAGE_NAME": "com.webcomm.paymentplugin"
         }
     },

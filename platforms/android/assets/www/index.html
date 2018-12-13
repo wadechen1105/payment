@@ -36,22 +36,31 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <title>Hello World</title>
     <style>
-        .inbox { width: 100%; 
-            height: 40px; 
-            margin-top: 40px; 
-            margin-bottom: 40px; 
-            position: relative;   
-            border-radius: 5px; 
-            border-color: gray;
-            text-align: center;
-            border-style: solid }
-        .img {width: 100%; height: auto; border: 0px; padding: 0;}
+        .img {width: 100%; height: 52px; border: 0px; padding: 0; margin-top: 50px;}
+        .show {display: inherit;}
+        .hide {display: none !important;}
         .center {width: 250px; height: 300px; margin: auto; text-align: center;}
+
+        /* HTML */
+        /* CSS */
+        .apple-pay-button {
+            display: inline-block;
+            -webkit-appearance: -apple-pay-button;
+            -apple-pay-button-type: check-out; /* also: check-out, book, or subscribe */
+        }
+        .apple-pay-button-black {
+            -apple-pay-button-style: black;
+        }
+        .apple-pay-button-white {
+            -apple-pay-button-style: white;
+        }
+        .apple-pay-button-white-with-line {
+            -apple-pay-button-style: white-outline;
+        }
     </style>
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/func.js"></script>
     <script type="text/javascript" src="inc/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="inc/jm/jquery.mobile-1.4.5.js"></script>
     <link href="inc/jm/jquery.mobile-1.4.5.css" rel="stylesheet" />
@@ -59,23 +68,35 @@
 
 <body>
     <div class="center">
-        <div id="checkReadyToPay" class="inbox">check payment available</div>
-        <img id="requestPayment_gPay" src="./img/buy-buttons-black.png" class="img" />
+        <img id="requestPayment_gPay" src="./img/buy-buttons-black.png" class="img hide" />
+        <div id="requestPayment_aPay" class="apple-pay-button apple-pay-button-black img hide"></div>
     </div>
 
+    <button id="checkReadyToPay" type="button" style="width: 80%; margin: auto;">check payment available</button>
     <script>
         $(document).ready(function () {
             $("#checkReadyToPay").click(function () {
                 PaymentPlugin.checkIsReadyToPay(
                     function (msg) {
-                        if(msg)
-                        alert("payment is ready");
-                        else
-                        alert("Can not use payment");
+                        if (msg) {
+                            if(device.platform === "iOS") {
+                                alert("apple payment is ready");
+                                $("#requestPayment_aPay").removeClass("hide");
+                            } else if (device.platform === "Android") {
+                                alert("google payment is ready");
+                                $("#requestPayment_gPay").removeClass("hide");
+                            }
+                        } else {
+                            alert("Can not use payment");
+                        }
                     });
             });
 
             $("#requestPayment_gPay").click(function () {
+                PaymentPlugin.requestPayment(500);
+            });
+
+            $("#requestPayment_aPay").click(function () {
                 PaymentPlugin.requestPayment(500);
             });
         });

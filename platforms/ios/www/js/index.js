@@ -47,13 +47,12 @@ app.initialize();
 
 var eventsHandler = {
     exec: function (result) {
-        if (result == PaymentPlugin.SUCCESS) {
-            alert("恭喜，付費成功");
-        } else if (result == PaymentPlugin.CANCEL) {
-            alert("取消付費");
-        }
-        else if(result == PaymentPlugin.FAILED) {
-            alert("取消失敗");
+        if (result == PaymentPlugin.success()) {
+            alert("payment success");
+        } else if (result == PaymentPlugin.cancel()) {
+            alert("payment cancel");
+        } else if(result == PaymentPlugin.failed()) {
+            alert("payment failed");
         }
     },
 }

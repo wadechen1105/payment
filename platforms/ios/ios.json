@@ -9,6 +9,10 @@
                 "parents": {
                     "/*": [
                         {
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"PaymentPlugin\"><param name=\"ios-package\" value=\"PaymentPlugin\" /></feature>",
                             "count": 1
                         }
@@ -19,18 +23,29 @@
     },
     "installed_plugins": {
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.webcomm.paymentplugin"
+            "PACKAGE_NAME": "com.webcomm.app.ios"
         },
-        "com.webcomm.cordova.plugin.payment": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+        },
+        "webcomm-cordova-plugin-payment": {
             "PACKAGE_NAME": "com.webcomm.paymentplugin"
         }
     },
     "dependent_plugins": {},
     "modules": [
         {
-            "id": "com.webcomm.cordova.plugin.payment.PaymentPlugin",
-            "file": "plugins/com.webcomm.cordova.plugin.payment/www/PaymentPlugin.js",
-            "pluginId": "com.webcomm.cordova.plugin.payment",
+            "id": "cordova-plugin-device.device",
+            "file": "plugins/cordova-plugin-device/www/device.js",
+            "pluginId": "cordova-plugin-device",
+            "clobbers": [
+                "device"
+            ]
+        },
+        {
+            "id": "webcomm-cordova-plugin-payment.PaymentPlugin",
+            "file": "plugins/webcomm-cordova-plugin-payment/www/PaymentPlugin.js",
+            "pluginId": "webcomm-cordova-plugin-payment",
             "clobbers": [
                 "PaymentPlugin"
             ]
@@ -38,6 +53,7 @@
     ],
     "plugin_metadata": {
         "cordova-plugin-whitelist": "1.3.3",
-        "com.webcomm.cordova.plugin.payment": "0.0.1"
+        "cordova-plugin-device": "2.0.2",
+        "webcomm-cordova-plugin-payment": "0.0.1"
     }
 }
